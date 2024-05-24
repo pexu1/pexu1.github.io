@@ -3,33 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <title>Peien Xu's Personal Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    .container {
+      width: 80%;
+      margin: auto;
+      overflow: hidden;
+      padding: 2rem;
+      background: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1, h2 {
+      color: #0056b3;
+    }
+    p {
+      margin: 0.5rem 0;
+    }
+    a {
+      color: #0056b3;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .contact-info, .research-interests {
+      margin-bottom: 2rem;
+    }
+    .orcid {
+      display: flex;
+      align-items: center;
+      margin-top: 1rem;
+    }
+    .orcid img {
+      margin-right: 0.5rem;
+    }
+  </style>
 </head>
 <body>
-  <h1>Peien Xu</h1>
-  <a
-    id="cy-effective-orcid-url"
-    class="underline"
-     href="https://orcid.org/0000-0001-9953-6582"
-     target="orcid.widget"
-     rel="me noopener noreferrer"
-     style="vertical-align: top">
-     <img
-        src="https://orcid.org/sites/default/files/images/orcid_16x16.png"
-        style="width: 1em; margin-inline-start: 0.5em"
-        alt="ORCID iD icon"/>
-      https://orcid.org/0000-0001-9953-6582
-    </a>
-  <h2>Contact Information</h2>
-  <p>Atmospheric and Oceanic Science Group</p>
-  <p>Dept. of Earth and Planetary Science, The University of Tokyo</p>
-  <p>7-3-1 Hongo, Tokyo, Japan, 113-0033</p>
-  <p>pexu@eps.s.u-tokyo.ac.jp</p>
-  
-  <p></p>
-  <h2>Research Interests</h2>
-  <p>Oceanic mesoscale eddies</p>
-  <p>Long-lived eddies</p>
-  <p>Eddy dissipation</p>
-   
+  <div class="container">
+    <h1>Peien Xu</h1>
+    <div class="orcid">
+      <a
+        id="cy-effective-orcid-url"
+        class="underline"
+        href="https://orcid.org/0000-0001-9953-6582"
+        target="orcid.widget"
+        rel="me noopener noreferrer">
+        <img
+          src="https://orcid.org/sites/default/files/images/orcid_16x16.png"
+          alt="ORCID iD icon"/>
+        https://orcid.org/0000-0001-9953-6582
+      </a>
+    </div>
+    <div class="contact-info">
+      <h2>Contact Information</h2>
+      <p><strong>Group:</strong> <a href="https://www-aos.eps.s.u-tokyo.ac.jp/index.html">Atmospheric and Oceanic Science Group</a></p>
+      <p><strong>Department:</strong> Dept. of Earth and Planetary Science, The University of Tokyo</p>
+      <p><strong>Address:</strong> 7-3-1 Hongo, Tokyo, Japan, 113-0033</p>
+      <p><strong>Email:</strong> pexu@eps.s.u-tokyo.ac.jp</p>
+    </div>
+    <div class="research-interests">
+      <h2>Research Interests</h2>
+      <p>Oceanic mesoscale eddies</p>
+      <p>Long-lived eddies</p>
+      <p>Eddy dissipation</p>
+    </div>
+  </div>
 </body>
 </html>
