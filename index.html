@@ -3,12 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <title>Peien Xu's Personal Page</title>
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background-color: #e0f0fa; /* 浅蓝色背景 */
+      color: #333;
+    }
+    .container {
+      width: 80%;
+      margin: auto;
+      overflow: hidden;
+      padding: 2rem;
+      background: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1, h2 {
+      color: #0056b3;
+      margin-bottom: 1rem;
+    }
+    p {
+      margin: 0.5rem 0;
+    }
+    a {
+      color: #0056b3;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .section {
+      margin-bottom: 2rem;
+    }
+    .orcid {
+      display: flex;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    .orcid img {
+      margin-right: 0.5rem;
+    }
+    .footer {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid #ddd;
+      font-size: 0.9rem;
+      color: #777;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <h1>Peien Xu</h1>
-    <div class="orcid"></div>
+    <div class="orcid">
       <a id="cy-effective-orcid-url" href="https://orcid.org/0000-0001-9953-6582" target="orcid.widget" rel="me noopener noreferrer">
         <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" alt="ORCID iD icon"/>
         https://orcid.org/0000-0001-9953-6582
@@ -29,14 +79,13 @@
     </div>
     <div class="section presentations">
       <h2>Presentations</h2>
-      <p>2023/12/14 Physical Oceanography Seminar: <a href="https://journals.ametsoc.org/view/journals/phoc/52/9/JPO-D-22-0044.1.xml">The response of a baroclinic anticyclonic eddy to relative wind stress forcing</a>, Wilder et al. (2022), J. Phys. Oceanogr., 52(9), 2129-2142</p>
-      <p>2024/05/26 Japan Geoscience Union Meeting 2024: [AOS12-03] On long-lived cyclonic eddies off western Australia</p>
-      <p>2024/06/20 Physical Oceanography Seminar: <a href="https://journals.ametsoc.org/view/journals/phoc/52/1/JPO-D-21-0092.1.xml">Generation Mechanisms of Mesoscale Eddies in the Mauritanian Upwelling Region</a>, Dilmahamod et al. (2022), J. Phys. Oceanogr. 52(1), 161-182</p>
+      <p><strong>2023/12/14</strong> Physical Oceanography Seminar: <a href="https://journals.ametsoc.org/view/journals/phoc/52/9/JPO-D-22-0044.1.xml">The response of a baroclinic anticyclonic eddy to relative wind stress forcing</a>, Wilder et al. (2022), J. Phys. Oceanogr., 52(9), 2129-2142</p>
+      <p><strong>2024/05/26</strong> Japan Geoscience Union Meeting 2024: <a href="https://www.jpgu.org/meeting_j2024/sessionlist_jp/detail/A-OS12.html">[AOS12-03] On long-lived cyclonic eddies off western Australia</a></p>
+      <p><strong>2024/06/20</strong> Physical Oceanography Seminar: <a href="https://journals.ametsoc.org/view/journals/phoc/52/1/JPO-D-21-0092.1.xml">Generation Mechanisms of Mesoscale Eddies in the Mauritanian Upwelling Region</a>, Dilmahamod et al. (2022), J. Phys. Oceanogr. 52(1), 161-182</p>
     </div>
     <div class="footer">
       <p>Last edited: June 12, 2024</p>
     </div>
   </div>
-  <script src="script.js"></script>
 </body>
 </html>
