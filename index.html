@@ -3,48 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <title>Peien Xu's Personal Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
+      font-family: 'Poppins', Arial, sans-serif;
+      line-height: 1.8;
       margin: 0;
       padding: 0;
-      background-color: #e0f0fa;
+      background: linear-gradient(to bottom right, #e3f2fd, #e0f7fa);
       color: #333;
+      overflow-x: hidden;
     }
+
     .container {
       width: 80%;
       margin: auto;
-      overflow: hidden;
       padding: 2rem;
       background: white;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      margin-top: 3rem;
     }
-    h1, h2 {
+
+    h1 {
       color: #0056b3;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 span {
+      font-size: 0.5em;
+      color: rgb(113, 113, 113);
+      font-weight: 300;
+    }
+
+    h2 {
+      color: #0066cc;
+      border-bottom: 2px solid #0056b3;
+      display: inline-block;
       margin-bottom: 1rem;
+      margin-top: 0.6rem;
+      padding-bottom: 0.2rem;
     }
+
     p {
-      margin: 0.5rem 0;
+      margin: 0.7rem 0;
     }
+
     a {
       color: #0056b3;
       text-decoration: none;
+      position: relative;
     }
-    a:hover {
-      text-decoration: underline;
+
+    a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background-color: #0056b3;
+      bottom: -2px;
+      left: 0;
+      transition: width 0.3s ease-in-out;
     }
+
+    a:hover::after {
+      width: 100%;
+    }
+
     .section {
+      margin-top: 2rem;
       margin-bottom: 2rem;
+      background: #f9f9f9;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease-in-out forwards;
     }
+
+    .section:nth-child(even) {
+      background: #f3f7fa;
+    }
+
     .orcid {
       display: flex;
       align-items: center;
       margin-bottom: 2rem;
     }
+
     .orcid img {
       margin-right: 0.5rem;
+      width: 20px;
+      height: 20px;
     }
+
     .footer {
       margin-top: 2rem;
       padding-top: 1rem;
@@ -53,14 +105,35 @@
       color: #777;
       text-align: center;
     }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        width: 95%;
+      }
+
+      .orcid img {
+        width: 16px;
+        height: 16px;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1 style="color: black;">Peien Xu <span style="font-size: 0.4em; color: rgb(113, 113, 113);">Master student</span></h1>
+    <h1>Peien Xu <span>Master student</span></h1>
     <div class="orcid">
       <a id="cy-effective-orcid-url" href="https://orcid.org/0000-0001-9953-6582" target="orcid.widget" rel="me noopener noreferrer">
-        <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" alt="ORCID iD icon"/>
         https://orcid.org/0000-0001-9953-6582
       </a>
     </div>
@@ -71,37 +144,41 @@
       <p><strong>Address:</strong> 820, Sci.1(West), 7-3-1 Hongo, Tokyo, Japan, 113-0033</p>
       <p><strong>Email:</strong> <a href="mailto:pexu@eps.s.u-tokyo.ac.jp">pexu@eps.s.u-tokyo.ac.jp</a>, <a href="mailto:pe.xu@outlook.com">pe.xu@outlook.com</a></p>
     </div>
-    <div class="section research-interests">
-      <h2>Research Interests</h2>
+    <div class="section interests">
+      <h2>Interests</h2>
       <p>Oceanic Long-lived eddies</p>
       <p>Leeuwin Current</p>
       <p>ROMS</p>
+      <p>Landscape Photography</p>
+      <p>Traveling</p>
+      <p>Food Exploration</p>
     </div>
-    <div class="Educations">
+    <div class="section educations">
       <h2>Educations</h2>
-      <p><strong>2019/09 - 2023/07</strong> Xiamen University Malaysia (Bachelor): Marine Biotechnology</a></p>
-      <p><strong>2023/10 - now</strong> The University of Tokyo: Physical Oceanography</a></p>
+      <p><strong>2023/10 - now</strong> The University of Tokyo: Physical Oceanography</p>
+      <p><strong>2019/09 - 2023/07</strong> Xiamen University Malaysia (Bachelor): Marine Biotechnology</p>
     </div>
     <div class="section presentations">
       <h2>Presentations</h2>
-      <!-- <p><strong>2023/12/14</strong> Physical Oceanography Seminar: <a href="https://journals.ametsoc.org/view/journals/phoc/52/9/JPO-D-22-0044.1.xml">The response of a baroclinic anticyclonic eddy to relative wind stress forcing</a>, Wilder et al. (2022), J. Phys. Oceanogr., 52(9), 2129-2142</p> -->
-      <p><strong>2024/08/26, Saga</strong> 2024年度 海洋若手研究集会: On long-lived cyclonic eddies off western Australia (poster)</a></p>
+      <p><strong>2024/08/26, Saga</strong> 2024年度 海洋若手研究集会: On long-lived cyclonic eddies off western Australia (poster)</p>
       <p><strong>2024/05/26, Tokyo</strong> Japan Geoscience Union Meeting 2024 [AOS12-03]: <a href="https://www.jpgu.org/meeting_j2024/sessionlist_jp/detail/A-OS12.html"> On long-lived cyclonic eddies off western Australia</a> (oral)</p>
-      <!-- <p><strong>2024/06/20</strong> Physical Oceanography Seminar: <a href="https://journals.ametsoc.org/view/journals/phoc/52/1/JPO-D-21-0092.1.xml">Generation Mechanisms of Mesoscale Eddies in the Mauritanian Upwelling Region</a>, Dilmahamod et al. (2022), J. Phys. Oceanogr. 52(1), 161-182</p> -->
     </div>
-    <div class="Other Experiences">
+    <div class="section other-experiences">
       <h2>Other Experiences</h2>
-      <p><strong>2025/02/08 - 2025/03/06</strong> R/V HAKUHO MARU, KH-25-1, Kuroshio current area around Japan</a></p>
-      <p><strong>2022/08</strong> R/V TAN KAH KEE, XMU at Sea Undergraduate Training Cruise|KK2203</a></p>
-      <p><strong>2021/07/15 - 2021/09/01</strong> MEL Summer Undergraduate Research Fellowship in Marine Environmental Science, Xiamen University</a></p>
+      <p><strong>2025/02/08 - 2025/03/06</strong> R/V HAKUHO MARU, KH-25-1, Kuroshio current area around Japan</p>
+      <p><strong>2022/08</strong> R/V TAN KAH KEE, XMU at Sea Undergraduate Training Cruise|KK2203</p>
+      <p><strong>2021/07/15 - 2021/09/01</strong> MEL Summer Undergraduate Research Fellowship in Marine Environmental Science, Xiamen University</p>
     </div>
-    <!-- <div class="photos">
-      <h2>Photos</h2>
-      <a href="https://nis.nikonimagespace.com/html/guest/index.html?g=yrwOayyaDfXuvRRB7Bx7_EFOGzStbb3Tfa1QfGxPz5TNDOSJ8A5UspxMbgqPQ_rotwid2sT6CqhrLtwG3-8ePw"><img src="https://cnv.nikonimagespace.com/emb/v1?g=yrwOayyaDfXuvRRB7Bx7_EFOGzStbb3Tfa1QfGxPz5TNDOSJ8A5UspxMbgqPQ_rotwid2sT6CqhrLtwG3-8ePw&t=1719133773885?1719134269808"></a>
-      </div> -->
     <div class="footer">
-      <p>Last edited: Nov 18, 2024</p>
+      <p id="last-edited">Last edited: </p>
     </div>
   </div>
+
+  <script>
+    // 自动更新最后编辑日期
+    const lastEdited = document.getElementById('last-edited');
+    const today = new Date();
+    lastEdited.textContent = `Last edited: ${today.toLocaleDateString()}`;
+  </script>
 </body>
 </html>
