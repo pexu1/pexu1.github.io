@@ -175,6 +175,31 @@
       font-size: 0.85rem;
       font-weight: 500;
     }
+
+    .separator {
+      margin: 0 0.5rem;
+      color: #888;
+      font-weight: 300;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0.6rem;
+      width: 2px;
+      background: #ccc;
+    }
+
+    .timeline-entry .timeline-date {
+      position: relative;
+    }
   </style>
 </head>
 <body>
@@ -201,20 +226,20 @@
     </div>
     <div class="section educations">
       <h2>Educations</h2>
-      <p><span class="tag">2023/10 - now</span> The University of Tokyo: Physical Oceanography</p>
-      <p><span class="tag">2019/09 - 2023/07</span> Xiamen University Malaysia: Marine Biotechnology (Bachelor)</p>
+      <p><span class="tag">2023/10 - now</span><span class="separator">|</span> The University of Tokyo: Physical Oceanography</p>
+      <p><span class="tag">2019/09 - 2023/07</span><span class="separator">|</span> Xiamen University Malaysia: Marine Biotechnology (Bachelor)</p>
     </div>
     <div class="section presentations">
       <h2>Presentations</h2>
-      <p><span class="tag">2024/08/26</span><span class="tag">Saga</span><span class="tag">poster</span> 2024年度 海洋若手研究集会: <em>On long-lived cyclonic eddies off western Australia</em></p>
-      <p><span class="tag">2024/05/26</span><span class="tag">Tokyo</span><span class="tag">oral</span> <a href="https://www.jpgu.org/meeting_j2024/sessionlist_jp/detail/A-OS12.html">Japan Geoscience Union Meeting 2024 [AOS12-03]</a>: <em>On long-lived cyclonic eddies off western Australia</em></p>
-      <p><span class="tag">2025/03/27</span><span class="tag">Kanagawa</span><span class="tag">oral</span> <a href="https://www.jamstec.go.jp/ofes/ofes_ws10/" target="_blank">2025 Workshop on Ocean and Atmosphere Simulations</a>: <em>On Long-Lived Cyclonic Eddies (LLCEs) off Western Australia: from Statistics to Energy Analysis</em></p>
+      <p><span class="tag">2025/03/27</span><span class="separator">|</span><span class="tag">Kanagawa</span><span class="separator">|</span><span class="tag">oral</span> <a href="https://www.jamstec.go.jp/ofes/ofes_ws10/" target="_blank">2025 Workshop on Ocean and Atmosphere Simulations</a>: <em>On Long-Lived Cyclonic Eddies (LLCEs) off Western Australia: from Statistics to Energy Analysis</em></p>
+      <p><span class="tag">2024/08/26</span><span class="separator">|</span><span class="tag">Saga</span><span class="separator">|</span><span class="tag">poster</span> 2024年度 海洋若手研究集会: <em>On long-lived cyclonic eddies off western Australia</em></p>
+      <p><span class="tag">2024/05/26</span><span class="separator">|</span><span class="tag">Tokyo</span><span class="separator">|</span><span class="tag">oral</span> <a href="https://www.jpgu.org/meeting_j2024/sessionlist_jp/detail/A-OS12.html">Japan Geoscience Union Meeting 2024 [AOS12-03]</a>: <em>On long-lived cyclonic eddies off western Australia</em></p>
     </div>
     <div class="section other-experiences">
       <h2>Other Experiences</h2>
-      <p><span class="tag">2025/02/08 - 2025/03/06</span><span class="tag">R/V HAKUHO MARU</span> KH-25-1, Kuroshio current area around Japan</p>
-      <p><span class="tag">2022/08</span><span class="tag">R/V TAN KAH KEE</span> XMU at Sea Undergraduate Training Cruise | KK2203</p>
-      <p><span class="tag">2021/07/15 - 2021/09/01</span><span class="tag">Xiamen University</span> MEL Summer Undergraduate Research Fellowship in Marine Environmental Science</p>
+      <p><span class="tag">2025/02/08 - 2025/03/06</span><span class="separator">|</span><span class="tag">R/V HAKUHO MARU</span> KH-25-1, Kuroshio current area around Japan</p>
+      <p><span class="tag">2022/08</span><span class="separator">|</span><span class="tag">R/V TAN KAH KEE</span> XMU at Sea Undergraduate Training Cruise | KK2203</p>
+      <p><span class="tag">2021/07/15 - 2021/09/01</span><span class="separator">|</span><span class="tag">Xiamen University</span> MEL Summer Undergraduate Research Fellowship in Marine Environmental Science</p>
     </div>
     <div class="footer">
       <p id="last-edited">Last edited: 2025/03/26</p>
