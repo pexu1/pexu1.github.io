@@ -1,11 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Peien Xu's Personal Page</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
+    .layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #f0f8ff;
+      padding: 2rem 1rem;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .sidebar h2 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #0056b3;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      margin: 0.7rem 0;
+    }
+
+    .sidebar ul li a {
+      color: #0056b3;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar ul li a:hover {
+      color: #003d80;
+      padding-left: 4px;
+    }
+
+    .content-area {
+      flex-grow: 1;
+      padding: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .layout {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        box-shadow: none;
+      }
+
+      .content-area {
+        padding: 1rem;
+      }
+    }
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
       line-height: 1.8;
@@ -17,7 +82,7 @@
     }
 
     .container {
-      width: 80%;
+      width: 90%;
       margin: auto;
       padding: 2rem;
       background: white;
@@ -108,6 +173,7 @@
         opacity: 0;
         transform: translateY(30px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -200,56 +266,140 @@
     .timeline-entry .timeline-date {
       position: relative;
     }
+
+    .filter-btn {
+      background-color: #e0f0ff;
+      color: #0056b3;
+      border: 1px solid #b3d7ff;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .filter-btn:hover {
+      background-color: #d0e9ff;
+      transform: translateY(-1px);
+    }
+
+    .filter-btn.active {
+      background-color: #c0e0ff;
+      font-weight: 600;
+      transform: scale(1.05);
+    }
+
+    .section.presentations p {
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .section.presentations p.hidden {
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      height: 0;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
   </style>
 </head>
+
 <body>
+  <div class="layout">
+    <aside class="sidebar">
+      <h2>About Me</h2>
+      <ul>
+        <li><a href="#affiliation">Affiliation</a></li>
+        <li><a href="#interests">Interests</a></li>
+        <li><a href="#educations">Educations</a></li>
+        <li><a href="#presentations">Presentations</a></li>
+        <li><a href="#other-experiences">Other Experiences</a></li>
+      </ul>
+    </aside>
+    <main class="content-area">
   <div class="container">
     <h1>Peien Xu <span>Master student</span></h1>
     <div class="orcid">
       <a href="https://orcid.org/0000-0001-9953-6582" target="_blank" rel="noopener noreferrer">ORCID</a>
-      <a href="https://www.researchgate.net/profile/Peien-Xu?ev=hdr_xprf" target="_blank" rel="noopener noreferrer" style="margin-left: 1rem;">ResearchGate</a>
-      <a href="https://www.instagram.com/xupeien/" target="_blank" rel="noopener noreferrer" style="margin-left: 1rem;">Instagram</a>
+      <a href="https://www.researchgate.net/profile/Peien-Xu?ev=hdr_xprf" target="_blank" rel="noopener noreferrer"
+        style="margin-left: 1rem;">ResearchGate</a>
+      <a href="https://www.instagram.com/xupeien/" target="_blank" rel="noopener noreferrer"
+        style="margin-left: 1rem;">Instagram</a>
     </div>
-    <div class="section affiliation">
+    <div class="section affiliation" id="affiliation">
       <h2>Affiliation</h2>
-      <p><strong>Group:</strong> <a href="https://www-aos.eps.s.u-tokyo.ac.jp/index.html">Atmospheric and Oceanic Science Group</a></p>
-      <p><strong>Department:</strong><a href="https://www.eps.s.u-tokyo.ac.jp"> Dept. of Earth and Planetary Science</a>, The University of Tokyo</p>
+      <p><strong>Group:</strong> <a href="https://www-aos.eps.s.u-tokyo.ac.jp/index.html">Atmospheric and Oceanic
+          Science Group</a></p>
+      <p><strong>Department:</strong><a href="https://www.eps.s.u-tokyo.ac.jp"> Dept. of Earth and Planetary
+          Science</a>, The University of Tokyo</p>
       <p><strong>Address:</strong> 820, Sci.1 (West), 7-3-1 Hongo, Tokyo, Japan, 113-0033</p>
-      <p><strong>Email:</strong> <a href="mailto:pexu@eps.s.u-tokyo.ac.jp">pexu@eps.s.u-tokyo.ac.jp</a>, <a href="mailto:pe.xu@outlook.com">pe.xu@outlook.com</a></p>
+      <p><strong>Email:</strong> <a href="mailto:pexu@eps.s.u-tokyo.ac.jp">pexu@eps.s.u-tokyo.ac.jp</a>, <a
+          href="mailto:pe.xu@outlook.com">pe.xu@outlook.com</a></p>
     </div>
-    <div class="section interests">
+    <div class="section interests" id="interests">
       <h2>Interests</h2>
       <p>Oceanic Long-lived eddies</p>
       <p>Leeuwin Current</p>
       <p>Landscape Photography</p>
       <p>Traveling</p>
-      <p>Food Exploration</p>
+      <p><a href="https://tabelog.com/rvwr/pexu/" target="_blank" rel="noopener noreferrer">Food Exploration</a></p>
     </div>
-    <div class="section educations">
+    <div class="section educations" id="educations">
       <h2>Educations</h2>
-      <p><span class="tag">2023/10 - now</span><span class="separator">|</span> The University of Tokyo: Physical Oceanography (Master)</p>
-      <p><span class="tag">2019/09 - 2023/07</span><span class="separator">|</span> Xiamen University Malaysia: Marine Biotechnology (Bachelor)</p>
+      <p><span class="tag">2023/10 - now</span><span class="separator">|</span><span class="tag">Master</span> The
+        University of Tokyo: Physical Oceanography</p>
+      <p><span class="tag">2019/09 - 2023/07</span><span class="separator">|</span><span class="tag">Bachelor</span>
+        Xiamen University Malaysia: Marine Biotechnology</p>
     </div>
-    <div class="section presentations">
+    <div class="section presentations" id="presentations">
       <h2>Presentations</h2>
-      <p><span class="tag">2025/07/28</span><span class="separator">|</span><span class="tag">Singapore</span><span class="separator">|</span><span class="tag">oral</span> <a href="https://www.meetmatt-svr.net/Timetable?cfId=7" target="_blank">22nd Annual Meeting of the Asia Oceania Geosciences Society (AOGS 2025) [OS02-A002]</a>: <em>On Long-Lived Cyclonic Eddies off Western Australia: from Statistics to Energy Analysis</em></p>
-      <p><span class="tag">2025/05/27</span><span class="separator">|</span><span class="tag">Chiba</span><span class="separator">|</span><span class="tag">poster</span> <a href="https://www.jpgu.org/meeting_e2025/sessionlist_en/detail/A-OS16.html" target="_blank">Japan Geoscience Union Meeting 2025 [AOS16-P01]</a>: <em>On Long-Lived Cyclonic Eddies off Western Australia: from Statistics to Energy Analysis</em></p>
-      <p><span class="tag">2025/03/27</span><span class="separator">|</span><span class="tag">Kanagawa</span><span class="separator">|</span><span class="tag">oral</span> <a href="https://www.jamstec.go.jp/ofes/ofes_ws10/" target="_blank">2025 Workshop on Ocean and Atmosphere Simulations</a>: <em>On Long-Lived Cyclonic Eddies (LLCEs) off Western Australia: from Statistics to Energy Analysis</em></p>
-      <p><span class="tag">2024/08/26</span><span class="separator">|</span><span class="tag">Saga</span><span class="separator">|</span><span class="tag">poster</span> 2024年度 海洋若手研究集会: <em>On long-lived cyclonic eddies off western Australia</em></p>
-      <p><span class="tag">2024/05/26</span><span class="separator">|</span><span class="tag">Tokyo</span><span class="separator">|</span><span class="tag">oral</span> <a href="https://www.jpgu.org/meeting_j2024/sessionlist_jp/detail/A-OS12.html">Japan Geoscience Union Meeting 2024 [AOS12-03]</a>: <em>On long-lived cyclonic eddies off western Australia</em></p>
+      <div style="margin-bottom: 1rem;">
+        <button onclick="filterPresentations('all')" style="margin-right: 0.5rem;" class="filter-btn">All</button>
+        <button onclick="filterPresentations('oral')" style="margin-right: 0.5rem;" class="filter-btn">Oral</button>
+        <button onclick="filterPresentations('poster')" class="filter-btn">Poster</button>
+      </div>
+      <p><span class="tag">2025/07/28</span><span class="separator">|</span><span class="tag">Singapore</span><span
+          class="separator">|</span><span class="tag">oral</span> <a
+          href="https://www.meetmatt-svr.net/Timetable?cfId=7" target="_blank">22nd Annual Meeting of the Asia Oceania
+          Geosciences Society (AOGS 2025) [OS02-A002]</a>: <em>On Long-Lived Cyclonic Eddies off Western Australia: from
+          Statistics to Energy Analysis</em></p>
+      <p><span class="tag">2025/05/27</span><span class="separator">|</span><span class="tag">Chiba</span><span
+          class="separator">|</span><span class="tag">poster</span> <a
+          href="https://www.jpgu.org/meeting_e2025/sessionlist_en/detail/A-OS16.html" target="_blank">Japan Geoscience
+          Union Meeting 2025 [AOS16-P01]</a>: <em>On Long-Lived Cyclonic Eddies off Western Australia: from Statistics
+          to Energy Analysis</em></p>
+      <p><span class="tag">2025/03/27</span><span class="separator">|</span><span class="tag">Kanagawa</span><span
+          class="separator">|</span><span class="tag">oral</span> <a href="https://www.jamstec.go.jp/ofes/ofes_ws10/"
+          target="_blank">2025 Workshop on Ocean and Atmosphere Simulations</a>: <em>On Long-Lived Cyclonic Eddies
+          (LLCEs) off Western Australia: from Statistics to Energy Analysis</em></p>
+      <p><span class="tag">2024/08/26</span><span class="separator">|</span><span class="tag">Saga</span><span
+          class="separator">|</span><span class="tag">poster</span> 2024年度 海洋若手研究集会: <em>On long-lived cyclonic eddies
+          off western Australia</em></p>
+      <p><span class="tag">2024/05/26</span><span class="separator">|</span><span class="tag">Tokyo</span><span
+          class="separator">|</span><span class="tag">oral</span> <a
+          href="https://www.jpgu.org/meeting_j2024/sessionlist_jp/detail/A-OS12.html">Japan Geoscience Union Meeting
+          2024 [AOS12-03]</a>: <em>On long-lived cyclonic eddies off western Australia</em></p>
     </div>
-    <div class="section other-experiences">
+    <div class="section other-experiences" id="other-experiences">
       <h2>Other Experiences</h2>
-      <p><span class="tag">2024-2025</span><span class="separator">|</span><span class="tag">東京大学</span> 大学院理学系研究科修士課程学生支援制度 (理学系修士卓越RA)</p>
-      <p><span class="tag">2025/02/08 - 2025/03/06</span><span class="separator">|</span><span class="tag">R/V HAKUHO MARU</span> KH-25-1, Glider/LADCP/AFP07/VMP2000/UVMP/XCTD, Kuroshio current area around Japan</p>
-      <p><span class="tag">2022/08</span><span class="separator">|</span><span class="tag">R/V TAN KAH KEE</span> XMU at Sea Undergraduate Training Cruise | KK2203</p>
-      <p><span class="tag">2021/07/15 - 2021/09/01</span><span class="separator">|</span><span class="tag">Xiamen University</span> MEL Summer Undergraduate Research Fellowship in Marine Environmental Science</p>
+      <p><span class="tag">2024-2025</span><span class="separator">|</span><span class="tag">東京大学</span>
+        大学院理学系研究科修士課程学生支援制度 (理学系修士卓越RA)</p>
+      <p><span class="tag">2025/02/08 - 2025/03/06</span><span class="separator">|</span><span class="tag">R/V HAKUHO
+          MARU</span> KH-25-1, Glider/LADCP/AFP07/VMP2000/UVMP/XCTD, Kuroshio current area around Japan</p>
+      <p><span class="tag">2022/08</span><span class="separator">|</span><span class="tag">R/V TAN KAH KEE</span> XMU at
+        Sea Undergraduate Training Cruise | KK2203</p>
+      <p><span class="tag">2021/07/15 - 2021/09/01</span><span class="separator">|</span><span class="tag">Xiamen
+          University</span> MEL Summer Undergraduate Research Fellowship in Marine Environmental Science</p>
     </div>
     <div class="footer">
       <p id="last-edited">Last edited: 2025/06/04</p>
     </div>
   </div>
-  
+    </main>
+  </div>
+
   <script>
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -264,5 +414,30 @@
       observer.observe(section);
     });
   </script>
+  <script>
+    function filterPresentations(filter) {
+      const items = document.querySelectorAll('.section.presentations p');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      // 按钮高亮
+      buttons.forEach(btn => btn.classList.remove('active'));
+      buttons.forEach(btn => {
+        if (btn.textContent.toLowerCase() === filter) {
+          btn.classList.add('active');
+        }
+      });
+
+      // 切换内容显示
+      items.forEach(item => {
+        const text = item.innerHTML;
+        if (filter === 'all' || text.includes(`<span class="tag">${filter}</span>`)) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+    }
+  </script>
 </body>
+
 </html>
