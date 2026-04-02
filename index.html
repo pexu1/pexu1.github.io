@@ -1,450 +1,1662 @@
+---
+layout: null
+---
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Peien Xu's Personal Page</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta name="description"
+    content="Peien Xu is a PhD student in physical oceanography at The University of Tokyo, currently studying bio-physical coupling of tropical instability wave-scale chlorophyll variability on ENSO.">
+  <title>Peien Xu | Physical Oceanography</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap"
+    rel="stylesheet">
   <style>
-    .layout {
-      display: flex;
-      min-height: 100vh;
+    :root {
+      --bg: #07131e;
+      --bg-deep: #0d1f2f;
+      --surface: rgba(255, 255, 255, 0.9);
+      --surface-strong: rgba(255, 255, 255, 0.96);
+      --surface-dark: rgba(11, 27, 42, 0.78);
+      --text: #122432;
+      --text-soft: #62717d;
+      --text-on-dark: #f4f8fb;
+      --line: rgba(18, 36, 50, 0.1);
+      --accent: #4dd2c1;
+      --accent-strong: #2a7fff;
+      --accent-warm: #ff9068;
+      --shadow: 0 24px 60px rgba(4, 15, 27, 0.14);
+      --shadow-large: 0 36px 90px rgba(4, 15, 27, 0.28);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --page-width: min(1200px, calc(100vw - 2rem));
+      --transition: 220ms ease;
     }
 
-    .sidebar {
-      width: 250px;
-      background-color: #f0f8ff;
-      padding: 2rem 1rem;
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      overflow-y: auto;
-      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+    * {
+      box-sizing: border-box;
     }
 
-    .sidebar h2 {
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-      color: #0056b3;
+    html {
+      scroll-behavior: smooth;
     }
 
-    .sidebar ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .sidebar ul li {
-      margin: 0.7rem 0;
-    }
-
-    .sidebar ul li a {
-      color: #0056b3;
-      text-decoration: none;
-      font-weight: 500;
-      transition: all 0.3s ease;
-    }
-
-    .sidebar ul li a:hover {
-      color: #003d80;
-      padding-left: 4px;
-    }
-
-    .content-area {
-      flex-grow: 1;
-      padding: 2rem;
-    }
-
-    @media (max-width: 768px) {
-      .layout {
-        flex-direction: column;
-      }
-
-      .sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
-        box-shadow: none;
-      }
-
-      .content-area {
-        padding: 1rem;
-      }
-    }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-      line-height: 1.8;
       margin: 0;
-      padding: 0;
-      background: linear-gradient(to bottom right, #e3f2fd, #e0f7fa);
-      color: #333;
+      min-height: 100vh;
+      font-family: "Space Grotesk", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(77, 210, 193, 0.18), transparent 28%),
+        radial-gradient(circle at 82% 14%, rgba(42, 127, 255, 0.24), transparent 22%),
+        radial-gradient(circle at 18% 72%, rgba(255, 144, 104, 0.14), transparent 18%),
+        linear-gradient(180deg, #07131e 0%, #0f2232 42%, #f1f5f7 42%, #eef3f6 100%);
       overflow-x: hidden;
     }
 
-    .container {
-      width: 90%;
-      margin: auto;
-      padding: 2rem;
-      background: white;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
-      margin-top: 3rem;
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(180deg, rgba(255, 255, 255, 0.9), transparent 85%);
+      opacity: 0.45;
     }
 
-    h1 {
-      color: #0056b3;
-      margin-bottom: 1.5rem;
-    }
-
-    h1 span {
-      font-size: 0.5em;
-      color: rgb(113, 113, 113);
-      font-weight: 300;
-    }
-
-    h2 {
-      color: #0066cc;
-      border-bottom: 2px solid #0056b3;
-      display: inline-block;
-      margin-bottom: 1rem;
-      margin-top: 0.6rem;
-      padding-bottom: 0.2rem;
-    }
-
-    p {
-      margin: 0.7rem 0;
+    ::selection {
+      background: rgba(77, 210, 193, 0.35);
+      color: #03131a;
     }
 
     a {
-      color: #0056b3;
+      color: inherit;
       text-decoration: none;
-      transition: color 0.3s ease, font-weight 0.3s ease;
     }
 
-    a:hover {
-      color: #003d80;
+    button {
+      font: inherit;
+    }
+
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      z-index: 60;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .scroll-progress span {
+      display: block;
+      width: 0;
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-strong));
+      box-shadow: 0 0 24px rgba(77, 210, 193, 0.8);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(7, 19, 30, 0.72);
+      backdrop-filter: blur(18px);
+    }
+
+    .header-inner {
+      width: var(--page-width);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.2rem;
+      padding: 0.95rem 0;
+      position: relative;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      min-width: 0;
+    }
+
+    .brand-name {
+      color: var(--text-on-dark);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-role {
+      color: rgba(244, 248, 251, 0.72);
+      font-size: 0.82rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .menu-button {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-on-dark);
+      cursor: pointer;
+      transition: transform var(--transition), background var(--transition);
+    }
+
+    .menu-button:hover {
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .site-nav a {
+      color: rgba(244, 248, 251, 0.78);
+      padding: 0.72rem 0.95rem;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      transition: color var(--transition), background var(--transition), transform var(--transition);
+    }
+
+    .site-nav a:hover,
+    .site-nav a.active {
+      color: var(--text-on-dark);
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-1px);
+    }
+
+    .page-shell {
+      width: var(--page-width);
+      margin: 0 auto;
+      padding: 1.8rem 0 4rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(320px, 0.75fr);
+      gap: 1.4rem;
+      align-items: stretch;
+    }
+
+    .hero-card,
+    .hero-side-card,
+    .panel,
+    .section-card {
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(1.7rem, 3vw, 2.8rem);
+      color: var(--text-on-dark);
+      background:
+        radial-gradient(circle at top right, rgba(77, 210, 193, 0.2), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(255, 144, 104, 0.12), transparent 30%),
+        linear-gradient(135deg, rgba(8, 22, 34, 0.92), rgba(17, 39, 60, 0.92));
+      box-shadow: var(--shadow-large);
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -10% -40% auto;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(77, 210, 193, 0.16), transparent 62%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: rgba(244, 248, 251, 0.85);
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-family: "Fraunces", serif;
+      font-size: clamp(2.8rem, 7vw, 5.25rem);
+      line-height: 0.95;
+      max-width: 11ch;
+    }
+
+    .hero h1 span {
+      display: block;
+      color: rgba(244, 248, 251, 0.72);
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      line-height: 1.45;
+      margin-top: 1rem;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 400;
+    }
+
+    .hero-lead {
+      max-width: 56ch;
+      margin: 1.4rem 0 0;
+      color: rgba(244, 248, 251, 0.82);
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.75rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      min-height: 50px;
+      padding: 0.85rem 1.15rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      cursor: pointer;
       font-weight: 600;
+      transition: transform var(--transition), background var(--transition), border-color var(--transition), color var(--transition);
     }
 
-    .section {
-      transition: transform 0.3s ease, opacity 0.5s ease;
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      color: #042631;
+      background: linear-gradient(120deg, #7be9dd, #9dc5ff);
+      box-shadow: 0 10px 28px rgba(77, 210, 193, 0.24);
+    }
+
+    .button-secondary {
+      color: var(--text-on-dark);
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.16);
+    }
+
+    .button-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .hero-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1.5rem;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: rgba(244, 248, 251, 0.9);
+      font-size: 0.9rem;
+    }
+
+    .copy-feedback {
+      min-height: 1.2rem;
+      margin-top: 0.85rem;
+      color: #9ff0e7;
+      font-size: 0.9rem;
+    }
+
+    .stat-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.85rem;
+      margin-top: 1.6rem;
+    }
+
+    .stat-card {
+      padding: 1rem;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .stat-label {
+      display: block;
+      color: rgba(244, 248, 251, 0.62);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-value {
+      color: var(--text-on-dark);
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .hero-side-card {
+      padding: 1.4rem;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      color: var(--text-on-dark);
+    }
+
+    .micro-label {
+      display: inline-block;
+      color: rgba(244, 248, 251, 0.68);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-side-card h2 {
+      margin: 0;
+      font-size: 1.35rem;
+      line-height: 1.35;
+    }
+
+    .hero-side-card p {
+      margin: 0.85rem 0 0;
+      color: rgba(244, 248, 251, 0.72);
+      line-height: 1.75;
+    }
+
+    .signal-list {
+      display: grid;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .signal-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.85rem 0.95rem;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .signal-item span {
+      color: rgba(244, 248, 251, 0.62);
+      font-size: 0.88rem;
+    }
+
+    .signal-item strong {
+      color: var(--text-on-dark);
+      font-size: 0.92rem;
+      text-align: right;
+    }
+
+    .hero-links {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .hero-link {
+      padding: 0.95rem 1rem;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform var(--transition), background var(--transition);
+    }
+
+    .hero-link:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .hero-link-title {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-link-meta {
+      color: rgba(244, 248, 251, 0.68);
+      font-size: 0.9rem;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 320px minmax(0, 1fr);
+      gap: 1.4rem;
+      margin-top: 1.4rem;
+      align-items: start;
+    }
+
+    .profile-rail {
+      position: sticky;
+      top: 5.8rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .panel,
+    .section-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+    }
+
+    .panel {
+      padding: 1.35rem;
+    }
+
+    .profile-top {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .monogram {
+      display: grid;
+      place-items: center;
+      width: 72px;
+      height: 72px;
+      border-radius: 24px;
+      background: linear-gradient(140deg, #1a9bc4, #1e4fff, #56dfc6);
+      color: white;
+      font-family: "Fraunces", serif;
+      font-size: 1.9rem;
+      box-shadow: 0 14px 28px rgba(30, 79, 255, 0.22);
+    }
+
+    .profile-top h2 {
+      margin: 0;
+      font-size: 1.15rem;
+    }
+
+    .profile-top p,
+    .panel p,
+    .section-card p,
+    .section-card li {
+      color: var(--text-soft);
+      line-height: 1.75;
+    }
+
+    .meta-list,
+    .quick-nav {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .meta-item,
+    .quick-nav a {
+      padding: 0.95rem 1rem;
+      border-radius: 18px;
+      background: rgba(10, 28, 45, 0.04);
+      border: 1px solid rgba(10, 28, 45, 0.06);
+      transition: transform var(--transition), background var(--transition);
+    }
+
+    .quick-nav a:hover {
+      transform: translateY(-2px);
+      background: rgba(42, 127, 255, 0.08);
+    }
+
+    .meta-label {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: var(--text-soft);
+      font-size: 0.74rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .meta-value {
+      color: var(--text);
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .side-links {
+      display: grid;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .side-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.9rem 1rem;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.86);
+      transition: transform var(--transition), border-color var(--transition);
+    }
+
+    .side-link:hover {
+      transform: translateY(-2px);
+      border-color: rgba(42, 127, 255, 0.22);
+    }
+
+    .side-link span:last-child {
+      color: var(--accent-strong);
+      font-weight: 700;
+    }
+
+    .main-content {
+      display: grid;
+      gap: 1.1rem;
+    }
+
+    .section-card {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(1.35rem, 2.5vw, 2rem);
+      transition: transform 300ms ease, opacity 600ms ease;
+    }
+
+    .section-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .section-card[data-reveal] {
       opacity: 0;
-      transform: translateY(20px);
-      margin-top: 2rem;
-      margin-bottom: 2rem;
-      background: #f9f9f9;
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+      transform: translateY(26px);
     }
 
-    .section.visible {
+    .section-card.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    .section:nth-child(even) {
-      background: #f3f7fa;
-    }
-
-    .orcid {
+    .section-heading {
       display: flex;
-      align-items: center;
-      margin-bottom: 2rem;
+      justify-content: space-between;
+      align-items: end;
+      gap: 1rem;
+      margin-bottom: 1.35rem;
     }
 
-    .orcid img {
-      margin-right: 0.5rem;
-      width: 20px;
-      height: 20px;
+    .section-kicker {
+      display: block;
+      margin-bottom: 0.45rem;
+      color: var(--accent-strong);
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
     }
 
-    .footer {
-      margin-top: 2rem;
-      padding-top: 1rem;
-      border-top: 1px solid #ddd;
-      font-size: 0.9rem;
-      color: #777;
-      text-align: center;
+    .section-title {
+      margin: 0;
+      font-family: "Fraunces", serif;
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
+      line-height: 1.05;
     }
 
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .section-summary {
+      max-width: 56ch;
+      margin: 0;
     }
 
-    @media (max-width: 768px) {
-      .container {
-        width: 95%;
-        padding: 1.5rem;
-      }
-
-      h1 {
-        font-size: 1.5rem;
-      }
-
-      h1 span {
-        font-size: 0.7em;
-      }
-
-      h2 {
-        font-size: 1.2rem;
-      }
-
-      p {
-        font-size: 0.9rem;
-      }
-
-      .orcid img {
-        width: 16px;
-        height: 16px;
-      }
+    .research-grid,
+    .life-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
     }
 
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 1.2rem;
-      }
+    .feature-card {
+      padding: 1.2rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(10, 28, 45, 0.08);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(244, 248, 250, 0.92));
+    }
 
-      h2 {
-        font-size: 1rem;
-      }
+    .feature-icon {
+      display: grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      border-radius: 15px;
+      background: linear-gradient(135deg, rgba(77, 210, 193, 0.18), rgba(42, 127, 255, 0.24));
+      color: var(--accent-strong);
+      font-weight: 700;
+      margin-bottom: 0.95rem;
+    }
 
-      p {
-        font-size: 0.8rem;
-      }
+    .feature-card h3,
+    .presentation-card h3,
+    .timeline-content h3,
+    .contact-card h3 {
+      margin: 0;
+      color: var(--text);
+      line-height: 1.4;
+    }
 
-      .container {
-        width: 90%;
-        padding: 1rem;
-      }
+    .feature-card p,
+    .presentation-card p,
+    .timeline-content p,
+    .contact-card p {
+      margin: 0.7rem 0 0;
+    }
 
-      .footer {
-        font-size: 0.8rem;
-      }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1rem;
     }
 
     .tag {
-      display: inline-block;
-      background-color: #e0f0ff;
-      color: #0056b3;
-      border-radius: 4px;
-      padding: 0.2rem 0.5rem;
-      margin-right: 0.5rem;
-      font-size: 0.85rem;
-      font-weight: 500;
-    }
-
-    .separator {
-      margin: 0 0.5rem;
-      color: #888;
-      font-weight: 300;
+      display: inline-flex;
+      align-items: center;
+      padding: 0.45rem 0.78rem;
+      border-radius: 999px;
+      background: rgba(42, 127, 255, 0.08);
+      color: var(--accent-strong);
+      font-size: 0.86rem;
+      font-weight: 600;
     }
 
     .timeline {
       position: relative;
-      padding-left: 2rem;
+      display: grid;
+      gap: 1rem;
     }
 
     .timeline::before {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       bottom: 0;
-      left: 0.6rem;
+      left: 16px;
       width: 2px;
-      background: #ccc;
+      background: linear-gradient(180deg, rgba(42, 127, 255, 0.36), rgba(77, 210, 193, 0.28));
     }
 
-    .timeline-entry .timeline-date {
+    .timeline-item {
       position: relative;
+      padding-left: 3rem;
     }
 
-    .filter-btn {
-      background-color: #e0f0ff;
-      color: #0056b3;
-      border: 1px solid #b3d7ff;
-      padding: 0.3rem 0.8rem;
-      border-radius: 4px;
+    .timeline-dot {
+      position: absolute;
+      top: 1rem;
+      left: 0;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: white;
+      border: 2px solid rgba(42, 127, 255, 0.45);
+      box-shadow: 0 8px 22px rgba(42, 127, 255, 0.14);
+    }
+
+    .timeline-content {
+      padding: 1.15rem 1.2rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(10, 28, 45, 0.08);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(245, 248, 250, 0.96));
+    }
+
+    .timeline-top,
+    .presentation-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.4rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(42, 127, 255, 0.08);
+      color: var(--accent-strong);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .badge.alt {
+      background: rgba(255, 144, 104, 0.12);
+      color: #d46539;
+    }
+
+    .badge.neutral {
+      background: rgba(10, 28, 45, 0.07);
+      color: var(--text);
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .filter-button {
+      border: 1px solid rgba(10, 28, 45, 0.08);
+      border-radius: 999px;
+      background: rgba(10, 28, 45, 0.04);
+      color: var(--text);
+      padding: 0.72rem 1rem;
       cursor: pointer;
-      font-size: 0.85rem;
-      font-weight: 500;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-
-    .filter-btn:hover {
-      background-color: #d0e9ff;
-      transform: translateY(-1px);
-    }
-
-    .filter-btn.active {
-      background-color: #c0e0ff;
       font-weight: 600;
-      transform: scale(1.05);
+      transition: transform var(--transition), background var(--transition), color var(--transition);
     }
 
-    .section.presentations p {
-      transition: opacity 0.4s ease, transform 0.4s ease;
+    .filter-button:hover,
+    .filter-button.active {
+      transform: translateY(-2px);
+      background: var(--text);
+      color: white;
     }
 
-    .section.presentations p.hidden {
-      opacity: 0;
-      transform: translateY(10px);
-      pointer-events: none;
-      height: 0;
-      overflow: hidden;
+    .presentations-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .presentation-card {
+      padding: 1.15rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(10, 28, 45, 0.08);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(246, 249, 251, 0.94));
+      transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+    }
+
+    .presentation-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 40px rgba(4, 15, 27, 0.08);
+    }
+
+    .presentation-card.is-hidden {
+      display: none;
+    }
+
+    .presentation-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-top: 0.9rem;
+      color: var(--accent-strong);
+      font-weight: 700;
+    }
+
+    .experience-grid,
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .contact-card {
+      padding: 1.25rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(10, 28, 45, 0.08);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(245, 248, 250, 0.94));
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .contact-actions .button {
+      min-height: 46px;
+    }
+
+    .button-light {
+      background: rgba(42, 127, 255, 0.08);
+      color: var(--accent-strong);
+      border-color: rgba(42, 127, 255, 0.12);
+    }
+
+    .site-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1.4rem;
+      padding: 0.25rem 0 0;
+      color: rgba(244, 248, 251, 0.76);
+    }
+
+    .site-footer p {
       margin: 0;
-      padding: 0;
+      line-height: 1.7;
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 45;
+      width: 50px;
+      height: 50px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 50%;
+      background: rgba(7, 19, 30, 0.82);
+      color: white;
+      cursor: pointer;
+      backdrop-filter: blur(16px);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+      transition: opacity var(--transition), transform var(--transition), background var(--transition);
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      background: rgba(7, 19, 30, 0.95);
+    }
+
+    @media (max-width: 1100px) {
+      .hero,
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-rail {
+        position: static;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .panel:first-child {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .stat-strip,
+      .research-grid,
+      .life-grid,
+      .presentations-grid,
+      .experience-grid,
+      .contact-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .menu-button {
+        display: inline-flex;
+      }
+
+      .site-nav {
+        display: none;
+        position: absolute;
+        top: calc(100% + 0.65rem);
+        left: 0;
+        right: 0;
+        padding: 0.85rem;
+        border-radius: 22px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(7, 19, 30, 0.95);
+        box-shadow: var(--shadow-large);
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .site-nav.open {
+        display: flex;
+      }
+
+      .site-nav a {
+        border-radius: 16px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      :root {
+        --page-width: min(100vw - 1rem, 100%);
+      }
+
+      .page-shell {
+        padding-top: 1rem;
+      }
+
+      .hero-card,
+      .hero-side-card,
+      .panel,
+      .section-card {
+        border-radius: 24px;
+      }
+
+      .hero-actions,
+      .contact-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .stat-strip,
+      .research-grid,
+      .life-grid,
+      .presentations-grid,
+      .experience-grid,
+      .contact-grid,
+      .profile-rail,
+      .hero-links {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading,
+      .site-footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .header-inner {
+        padding: 0.8rem 0;
+      }
+
+      .hero h1 {
+        max-width: 8ch;
+      }
+
+      .timeline::before {
+        left: 12px;
+      }
+
+      .timeline-item {
+        padding-left: 2.5rem;
+      }
+
+      .timeline-dot {
+        width: 26px;
+        height: 26px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div class="layout">
-    <aside class="sidebar">
-      <h2>About Me</h2>
-      <ul>
-        <li><a href="#affiliation">Affiliation</a></li>
-        <li><a href="#interests">Interests</a></li>
-        <li><a href="#educations">Educations</a></li>
-        <li><a href="#presentations">Presentations</a></li>
-        <li><a href="#other-experiences">Other Experiences</a></li>
-      </ul>
-    </aside>
-    <main class="content-area">
-  <div class="container">
-    <h1>Peien Xu <span>PhD student</span></h1>
-    <div class="orcid">
-      <a href="https://orcid.org/0000-0001-9953-6582" target="_blank" rel="noopener noreferrer">ORCID</a>
-      <a href="https://www.researchgate.net/profile/Peien-Xu?ev=hdr_xprf" target="_blank" rel="noopener noreferrer"
-        style="margin-left: 1rem;">ResearchGate</a>
-      <a href="https://www.instagram.com/xupeien/" target="_blank" rel="noopener noreferrer"
-        style="margin-left: 1rem;">Instagram</a>
-    </div>
-    <div class="section affiliation" id="affiliation">
-      <h2>Affiliation</h2>
-      <p><strong>Group:</strong> <a href="https://www-aos.eps.s.u-tokyo.ac.jp/index.html">Atmospheric and Oceanic
-          Science Group</a></p>
-      <p><strong>Department:</strong><a href="https://www.eps.s.u-tokyo.ac.jp"> Dept. of Earth and Planetary
-          Science</a>, The University of Tokyo</p>
-      <p><strong>Address:</strong> 820, Sci.1 (West), 7-3-1 Hongo, Tokyo, Japan, 113-0033</p>
-      <p><strong>Email:</strong> <a href="mailto:pexu@eps.s.u-tokyo.ac.jp">pexu@eps.s.u-tokyo.ac.jp</a>, <a
-          href="mailto:pe.xu@outlook.com">pe.xu@outlook.com</a></p>
-    </div>
-    <div class="section interests" id="interests">
-      <h2>Interests</h2>
-      <p>Research 1: Oceanic long-lived eddies off western Australia (Leeuwin Current)</p>
-      <p>Research 2: Tropical Instability Wave and ENSO</p>
-      <p>Hobby: Landscape Photography, Bird Photography, Traveling, <a href="https://tabelog.com/rvwr/pexu/" target="_blank" rel="noopener noreferrer">Food Exploration</a></p>
-      <p>Programming: MATLAB, Python</p>
-      <p>Languages: Chinese (native), English (fluent), Japanese (very limited)</p>
-    </div>
-    <div class="section educations" id="educations">
-      <h2>Educations</h2>
-      <p><span class="tag">2025/10 - now</span><span class="separator">|</span><span class="tag">Doctor</span> The
-        University of Tokyo: Physical Oceanography</p>
-      <p><span class="tag">2023/10 - 2025/09</span><span class="separator">|</span><span class="tag">Master</span> The
-        University of Tokyo: Physical Oceanography</p>
-      <p><span class="tag">2019/09 - 2023/07</span><span class="separator">|</span><span class="tag">Bachelor</span>
-        Xiamen University Malaysia: Marine Biotechnology</p>
-    </div>
-    <div class="section presentations" id="presentations">
-      <h2>Presentations</h2>
-      <div style="margin-bottom: 1rem;">
-        <button onclick="filterPresentations('all')" style="margin-right: 0.5rem;" class="filter-btn">All</button>
-        <button onclick="filterPresentations('oral')" style="margin-right: 0.5rem;" class="filter-btn">Oral</button>
-        <button onclick="filterPresentations('poster')" class="filter-btn">Poster</button>
+  <div class="scroll-progress" aria-hidden="true"><span data-scroll-progress></span></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-name">Peien Xu</span>
+        <span class="brand-role">Physical Oceanography • The University of Tokyo</span>
       </div>
-      <p><span class="tag">2025/08/28</span><span class="separator">|</span><span class="tag">Wakayama</span><span
-          class="separator">|</span><span class="tag">poster</span> 2025年度 海洋若手研究集会: <em>On long-lived cyclonic eddies
-          off western Australia</em></p>
-      <p><span class="tag">2025/07/28</span><span class="separator">|</span><span class="tag">Singapore</span><span
-          class="separator">|</span><span class="tag">oral</span> <a
-          href="https://www.meetmatt-svr.net/Timetable?cfId=7" target="_blank">22nd Annual Meeting of the Asia Oceania
-          Geosciences Society (AOGS 2025) [OS02-A002]</a>: <em>On Long-Lived Cyclonic Eddies off Western Australia: from
-          Statistics to Energy Analysis</em></p>
-      <p><span class="tag">2025/05/27</span><span class="separator">|</span><span class="tag">Chiba</span><span
-          class="separator">|</span><span class="tag">poster</span> <a
-          href="https://www.jpgu.org/meeting_e2025/sessionlist_en/detail/A-OS16.html" target="_blank">Japan Geoscience
-          Union Meeting 2025 [AOS16-P01]</a>: <em>On Long-Lived Cyclonic Eddies off Western Australia: from Statistics
-          to Energy Analysis</em></p>
-      <p><span class="tag">2025/03/27</span><span class="separator">|</span><span class="tag">Kanagawa</span><span
-          class="separator">|</span><span class="tag">oral</span> <a href="https://www.jamstec.go.jp/ofes/ofes_ws10/"
-          target="_blank">2025 Workshop on Ocean and Atmosphere Simulations</a>: <em>On Long-Lived Cyclonic Eddies
-          (LLCEs) off Western Australia: from Statistics to Energy Analysis</em></p>
-      <p><span class="tag">2024/08/26</span><span class="separator">|</span><span class="tag">Saga</span><span
-          class="separator">|</span><span class="tag">poster</span> 2024年度 海洋若手研究集会: <em>On long-lived cyclonic eddies
-          off western Australia</em></p>
-      <p><span class="tag">2024/05/26</span><span class="separator">|</span><span class="tag">Tokyo</span><span
-          class="separator">|</span><span class="tag">oral</span> <a
-          href="https://www.jpgu.org/meeting_j2024/sessionlist_jp/detail/A-OS12.html">Japan Geoscience Union Meeting
-          2024 [AOS12-03]</a>: <em>On long-lived cyclonic eddies off western Australia</em></p>
+      <button class="menu-button" type="button" aria-label="Toggle navigation" aria-expanded="false"
+        data-menu-toggle>Menu</button>
+      <nav class="site-nav" data-site-nav>
+        <a href="#overview" data-nav-link>Overview</a>
+        <a href="#research" data-nav-link>Research</a>
+        <a href="#journey" data-nav-link>Journey</a>
+        <a href="#presentations" data-nav-link>Presentations</a>
+        <a href="#experience" data-nav-link>Experience</a>
+        <a href="#connect" data-nav-link>Contact</a>
+        <a href="{{ '/gallery/' | relative_url }}">Gallery</a>
+      </nav>
     </div>
-    <div class="section other-experiences" id="other-experiences">
-      <h2>Other Experiences</h2>
-      <p><span class="tag">2025/10 - 2028/09</span><span class="separator">|</span><span class="tag">JST & 東京大学</span>
-        2025年-2028年 JST次世代研究者挑戦的研究プログラム（SPRING）</p>
-      <p>東京大学「グリーントランスフォーメーション（ＧＸ）を先導する高度人材育成（SPRING GX）」プロジェクト生</p>
-      <p><span class="tag">2024/01 - 2025/08</span><span class="separator">|</span><span class="tag">東京大学</span>
-        大学院理学系研究科修士課程学生支援制度 (理学系修士卓越RA)</p>
-      <p><span class="tag">2025/02/08 - 2025/03/06</span><span class="separator">|</span><span class="tag">R/V HAKUHO
-          MARU</span> KH-25-1, Glider/LADCP/AFP07/VMP2000/UVMP/XCTD, Kuroshio current area around Japan</p>
-      <p><span class="tag">2022/08</span><span class="separator">|</span><span class="tag">R/V TAN KAH KEE</span> XMU at
-        Sea Undergraduate Training Cruise | KK2203</p>
-      <p><span class="tag">2021/07/15 - 2021/09/01</span><span class="separator">|</span><span class="tag">Xiamen
-          University</span> MEL Summer Undergraduate Research Fellowship in Marine Environmental Science</p>
-    </div>
-    <div class="footer">
-      <p id="last-edited">Last edited: 2025/10/03</p>
-    </div>
-  </div>
-    </main>
-  </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="hero" id="overview">
+      <article class="hero-card">
+        <span class="eyebrow">Physical Oceanography • PhD Student</span>
+        <h1>
+          Peien Xu
+          <span>Studying bio-physical coupling, tropical instability waves, and upper-ocean variability on ENSO.</span>
+        </h1>
+        <p class="hero-lead">
+          I am a PhD student in the Atmospheric and Oceanic Science Group at The University of Tokyo. My current work
+          focuses on quantifying bio-physical coupling of tropical instability wave-scale chlorophyll variability on
+          ENSO. My undergraduate and master's research centered on long-lived cyclonic eddies off Western Australia,
+          which built the physical oceanography foundation behind my current direction.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="mailto:pexu@eps.s.u-tokyo.ac.jp">Contact Me</a>
+          <a class="button button-secondary" href="#presentations">View Presentations</a>
+          <button class="button button-secondary" type="button" data-copy-email
+            data-email="pexu@eps.s.u-tokyo.ac.jp">Copy Email</button>
+        </div>
+        <p class="copy-feedback" id="copy-feedback" aria-live="polite"></p>
+        <div class="hero-highlights">
+          <span class="hero-pill">Bio-Physical Coupling</span>
+          <span class="hero-pill">Tropical Instability Waves</span>
+          <span class="hero-pill">ENSO</span>
+          <span class="hero-pill">LLCEs Background</span>
+          <span class="hero-pill">MATLAB &amp; Python</span>
+        </div>
+        <div class="stat-strip">
+          <div class="stat-card">
+            <span class="stat-label">Based In</span>
+            <span class="stat-value">Tokyo, Japan</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Current Stage</span>
+            <span class="stat-value">PhD since 2025/10</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Fieldwork</span>
+            <span class="stat-value">Cruise experience and onboard observational skills</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Languages</span>
+            <span class="stat-value">Chinese, English, Japanese (N3)</span>
+          </div>
+        </div>
+      </article>
+
+      <div class="hero-side">
+        <article class="hero-side-card">
+          <span class="micro-label">Current Focus</span>
+          <h2>Quantifying TIW-scale chlorophyll variability and its impact on ENSO</h2>
+          <p>
+            My PhD research examines how mixed layer depth and chlorophyll associated with tropical instability waves
+            modulate upper-ocean shortwave heating, as part of a broader effort to understand bio-physical coupling on
+            ENSO.
+          </p>
+          <div class="signal-list">
+            <div class="signal-item">
+              <span>Group</span>
+              <strong>Atmospheric and Oceanic Science</strong>
+            </div>
+            <div class="signal-item">
+              <span>Department</span>
+              <strong>Earth and Planetary Science</strong>
+            </div>
+            <div class="signal-item">
+              <span>Institution</span>
+              <strong>The University of Tokyo</strong>
+            </div>
+            <div class="signal-item">
+              <span>Previous Focus</span>
+              <strong>LLCEs off Western Australia</strong>
+            </div>
+          </div>
+        </article>
+
+        <article class="hero-side-card">
+          <span class="micro-label">Find Me Online</span>
+          <div class="hero-links">
+            <a class="hero-link" href="https://orcid.org/0000-0001-9953-6582" target="_blank"
+              rel="noopener noreferrer">
+              <span class="hero-link-title">ORCID</span>
+              <span class="hero-link-meta">0000-0001-9953-6582</span>
+            </a>
+            <a class="hero-link" href="https://www.researchgate.net/profile/Peien-Xu?ev=hdr_xprf" target="_blank"
+              rel="noopener noreferrer">
+              <span class="hero-link-title">ResearchGate</span>
+              <span class="hero-link-meta">Publications &amp; profile</span>
+            </a>
+            <a class="hero-link" href="https://www.instagram.com/xupeien/" target="_blank" rel="noopener noreferrer">
+              <span class="hero-link-title">Instagram</span>
+              <span class="hero-link-meta">Photography &amp; moments</span>
+            </a>
+            <a class="hero-link" href="https://tabelog.com/rvwr/pexu/" target="_blank" rel="noopener noreferrer">
+              <span class="hero-link-title">Food Log</span>
+              <span class="hero-link-meta">Tabelog reviews</span>
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-grid">
+      <aside class="profile-rail">
+        <section class="panel">
+          <div class="profile-top">
+            <div class="monogram" aria-hidden="true">PX</div>
+            <div>
+              <h2>Ocean-focused researcher</h2>
+              <p>Physical oceanography, observation, and data-driven interpretation.</p>
+            </div>
+          </div>
+          <div class="meta-list">
+            <div class="meta-item">
+              <span class="meta-label">Affiliation</span>
+              <span class="meta-value"><a href="https://www-aos.eps.s.u-tokyo.ac.jp/index.html" target="_blank"
+                  rel="noopener noreferrer">Atmospheric and Oceanic Science Group</a></span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Address</span>
+              <span class="meta-value">820, Sci.1 (West), 7-3-1 Hongo, Tokyo 113-0033, Japan</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Email</span>
+              <span class="meta-value"><a href="mailto:pexu@eps.s.u-tokyo.ac.jp">pexu@eps.s.u-tokyo.ac.jp</a><br><a
+                  href="mailto:pe.xu@outlook.com">pe.xu@outlook.com</a></span>
+            </div>
+          </div>
+          <div class="side-links">
+            <a class="side-link" href="https://www-aos.eps.s.u-tokyo.ac.jp/index.html" target="_blank" rel="noopener noreferrer">
+              <span>Department Website</span>
+              <span>Open</span>
+            </a>
+            <a class="side-link" href="mailto:pexu@eps.s.u-tokyo.ac.jp">
+              <span>Email Me</span>
+              <span>Write</span>
+            </a>
+          </div>
+        </section>
+
+        <section class="panel">
+          <span class="meta-label">Quick Navigation</span>
+          <div class="quick-nav">
+            <a href="#research">Research directions</a>
+            <a href="#journey">Academic journey</a>
+            <a href="#presentations">Selected presentations</a>
+            <a href="#experience">Other experiences</a>
+            <a href="#contact-cards">Ways to connect</a>
+          </div>
+        </section>
+      </aside>
+
+      <div class="main-content">
+        <section class="section-card visible" id="research" data-reveal>
+          <div class="section-heading">
+            <div>
+              <span class="section-kicker">Research</span>
+              <h2 class="section-title">Questions I am pursuing in the ocean</h2>
+            </div>
+            <p class="section-summary">
+              My interests sit at the intersection of circulation dynamics, variability, and observation, with an
+              emphasis on turning complex physical processes into clean, interpretable stories.
+            </p>
+          </div>
+          <div class="research-grid">
+            <article class="feature-card">
+              <div class="feature-icon" aria-hidden="true">01</div>
+              <h3>Bio-physical coupling of TIW-scale chlorophyll variability on ENSO</h3>
+              <p>
+                Quantifying how tropical instability wave-scale chlorophyll variability interacts with upper-ocean
+                processes and contributes to the modulation of ENSO-related variability.
+              </p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon" aria-hidden="true">02</div>
+              <h3>Mixed layer depth, chlorophyll, and shortwave heating</h3>
+              <p>
+                Investigating how mixed layer depth and chlorophyll associated with tropical instability waves modulate
+                upper-ocean shortwave heating and shape ocean-atmosphere coupling.
+              </p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon" aria-hidden="true">03</div>
+              <h3>LLCEs off Western Australia</h3>
+              <p>
+                My undergraduate and master's research focused on long-lived cyclonic eddies off Western Australia,
+                from statistics to energy analysis, especially in the context of the Leeuwin Current system.
+              </p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon" aria-hidden="true">04</div>
+              <h3>Observation and cruise literacy</h3>
+              <p>
+                I have hands-on cruise and observational experience and understand shipboard measurements and
+                instruments, even though my current research does not primarily rely on those datasets.
+              </p>
+            </article>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Physical Oceanography</span>
+            <span class="tag">Bio-Physical Coupling</span>
+            <span class="tag">Tropical Instability Waves</span>
+            <span class="tag">ENSO</span>
+            <span class="tag">LLCEs</span>
+          </div>
+        </section>
+
+        <section class="section-card" id="journey" data-reveal>
+          <div class="section-heading">
+            <div>
+              <span class="section-kicker">Journey</span>
+              <h2 class="section-title">Academic path</h2>
+            </div>
+            <p class="section-summary">
+              A trajectory from marine biotechnology into physical oceanography, gradually moving toward more focused
+              dynamical and observational questions.
+            </p>
+          </div>
+          <div class="timeline">
+            <article class="timeline-item">
+              <div class="timeline-dot" aria-hidden="true"></div>
+              <div class="timeline-content">
+                <div class="timeline-top">
+                  <span class="badge">2025/10 - now</span>
+                  <span class="badge neutral">Doctor</span>
+                </div>
+                <h3>The University of Tokyo</h3>
+                <p>PhD student in Physical Oceanography, currently working on bio-physical coupling of tropical instability wave-scale chlorophyll variability on ENSO.</p>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <div class="timeline-dot" aria-hidden="true"></div>
+              <div class="timeline-content">
+                <div class="timeline-top">
+                  <span class="badge">2023/10 - 2025/09</span>
+                  <span class="badge neutral">Master</span>
+                </div>
+                <h3>The University of Tokyo</h3>
+                <p>Master's program in Physical Oceanography, focused on long-lived cyclonic eddies off Western Australia.</p>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <div class="timeline-dot" aria-hidden="true"></div>
+              <div class="timeline-content">
+                <div class="timeline-top">
+                  <span class="badge">2019/09 - 2023/07</span>
+                  <span class="badge neutral">Bachelor</span>
+                </div>
+                <h3>Xiamen University Malaysia</h3>
+                <p>Bachelor's degree in Marine Biotechnology, with undergraduate research already centered on LLCEs.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-card" id="presentations" data-reveal>
+          <div class="section-heading">
+            <div>
+              <span class="section-kicker">Presentations</span>
+              <h2 class="section-title">Recent talks and posters</h2>
+            </div>
+            <p class="section-summary">
+              A selective record of talks, posters, and workshop presentations, showing the transition from LLCEs work
+              toward current tropical instability wave and ENSO research.
+            </p>
+          </div>
+
+          <div class="toolbar" role="toolbar" aria-label="Presentation filters">
+            <button class="filter-button active" type="button" data-filter="all">All</button>
+            <button class="filter-button" type="button" data-filter="oral">Oral</button>
+            <button class="filter-button" type="button" data-filter="poster">Poster</button>
+          </div>
+
+          <div class="presentations-grid">
+            <article class="presentation-card" data-kind="oral">
+              <div class="presentation-meta">
+                <span class="badge">2026/08</span>
+                <span class="badge neutral">AOGS</span>
+                <span class="badge alt">Upcoming Oral</span>
+              </div>
+              <h3>Asia Oceania Geosciences Society 2026</h3>
+              <p><em>Modulation of Upper-Ocean Shortwave Heating by Mixed Layer Depth and Chlorophyll associated with Tropical Instability Waves</em></p>
+            </article>
+
+            <article class="presentation-card" data-kind="oral">
+              <div class="presentation-meta">
+                <span class="badge">2026/05</span>
+                <span class="badge neutral">JpGU-AGU Joint Meeting</span>
+                <span class="badge alt">Upcoming Oral</span>
+              </div>
+              <h3>JpGU-AGU Joint Meeting 2026</h3>
+              <p><em>Modulation of Upper-Ocean Shortwave Heating by Mixed Layer Depth and Chlorophyll associated with Tropical Instability Waves</em></p>
+            </article>
+
+            <article class="presentation-card" data-kind="poster">
+              <div class="presentation-meta">
+                <span class="badge">2025/08/28</span>
+                <span class="badge neutral">Wakayama</span>
+                <span class="badge alt">Poster</span>
+              </div>
+              <h3>2025年度 海洋若手研究集会</h3>
+              <p><em>On long-lived cyclonic eddies off western Australia</em></p>
+            </article>
+
+            <article class="presentation-card" data-kind="oral">
+              <div class="presentation-meta">
+                <span class="badge">2025/07/28</span>
+                <span class="badge neutral">Singapore</span>
+                <span class="badge alt">Oral</span>
+              </div>
+              <h3>22nd Annual Meeting of the Asia Oceania Geosciences Society (AOGS 2025)</h3>
+              <p><em>On Long-Lived Cyclonic Eddies off Western Australia: from Statistics to Energy Analysis</em></p>
+              <a class="presentation-link" href="https://www.meetmatt-svr.net/Timetable?cfId=7" target="_blank"
+                rel="noopener noreferrer">Conference page</a>
+            </article>
+
+            <article class="presentation-card" data-kind="poster">
+              <div class="presentation-meta">
+                <span class="badge">2025/05/27</span>
+                <span class="badge neutral">Chiba</span>
+                <span class="badge alt">Poster</span>
+              </div>
+              <h3>Japan Geoscience Union Meeting 2025 [AOS16-P01]</h3>
+              <p><em>On Long-Lived Cyclonic Eddies off Western Australia: from Statistics to Energy Analysis</em></p>
+              <a class="presentation-link" href="https://www.jpgu.org/meeting_e2025/sessionlist_en/detail/A-OS16.html"
+                target="_blank" rel="noopener noreferrer">Session page</a>
+            </article>
+
+            <article class="presentation-card" data-kind="oral">
+              <div class="presentation-meta">
+                <span class="badge">2025/03/27</span>
+                <span class="badge neutral">Kanagawa</span>
+                <span class="badge alt">Oral</span>
+              </div>
+              <h3>2025 Workshop on Ocean and Atmosphere Simulations</h3>
+              <p><em>On Long-Lived Cyclonic Eddies (LLCEs) off Western Australia: from Statistics to Energy Analysis</em></p>
+              <a class="presentation-link" href="https://www.jamstec.go.jp/ofes/ofes_ws10/" target="_blank"
+                rel="noopener noreferrer">Workshop page</a>
+            </article>
+
+            <article class="presentation-card" data-kind="poster">
+              <div class="presentation-meta">
+                <span class="badge">2024/08/26</span>
+                <span class="badge neutral">Saga</span>
+                <span class="badge alt">Poster</span>
+              </div>
+              <h3>2024年度 海洋若手研究集会</h3>
+              <p><em>On long-lived cyclonic eddies off western Australia</em></p>
+            </article>
+
+            <article class="presentation-card" data-kind="oral">
+              <div class="presentation-meta">
+                <span class="badge">2024/05/26</span>
+                <span class="badge neutral">Tokyo</span>
+                <span class="badge alt">Oral</span>
+              </div>
+              <h3>Japan Geoscience Union Meeting 2024 [AOS12-03]</h3>
+              <p><em>On long-lived cyclonic eddies off western Australia</em></p>
+              <a class="presentation-link" href="https://www.jpgu.org/meeting_j2024/sessionlist_jp/detail/A-OS12.html"
+                target="_blank" rel="noopener noreferrer">Session page</a>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-card" id="experience" data-reveal>
+          <div class="section-heading">
+            <div>
+              <span class="section-kicker">Experience</span>
+              <h2 class="section-title">Support, cruises, and research experience</h2>
+            </div>
+            <p class="section-summary">
+              These experiences have given me real shipboard exposure and observational literacy, even though my current
+              research is not primarily built on cruise datasets themselves.
+            </p>
+          </div>
+          <div class="experience-grid">
+            <article class="feature-card">
+              <div class="feature-icon" aria-hidden="true">A</div>
+              <h3>JST SPRING Program</h3>
+              <p>2025/10 - 2028/09, supported by JST and The University of Tokyo as part of the SPRING GX project.</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon" aria-hidden="true">B</div>
+              <h3>Master RA</h3>
+              <p>2024/01 - 2025/08, supported through the Graduate School of Science master's student program.</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon" aria-hidden="true">C</div>
+              <h3>R/V HAKUHO MARU</h3>
+              <p>KH-25-1 cruise, 2025/02/08 - 2025/03/06. Worked with glider, LADCP, AFP07, VMP2000, UVMP, and XCTD in
+                the Kuroshio region around Japan, building practical shipboard and observational experience.</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon" aria-hidden="true">D</div>
+              <h3>R/V TAN KAH KEE &amp; summer fellowship</h3>
+              <p>XMU training cruise in 2022/08 and MEL Summer Undergraduate Research Fellowship in 2021/07 - 2021/09,
+                contributing to my background in field observation and oceanographic practice.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-card" id="contact-cards" data-reveal>
+          <div class="section-heading">
+            <div>
+              <span class="section-kicker">Beyond Research</span>
+              <h2 class="section-title">The human side of the homepage</h2>
+            </div>
+            <p class="section-summary">
+              I care about making science approachable and visually clear, and a lot of that instinct also comes from
+              photography, travel, and paying attention to places.
+            </p>
+          </div>
+          <div class="life-grid">
+            <article class="contact-card">
+              <h3>Photography</h3>
+              <p>Landscape photography and bird photography help me observe light, movement, and detail with patience.</p>
+            </article>
+            <article class="contact-card">
+              <h3>Travel &amp; food exploration</h3>
+              <p>Traveling and exploring local food culture keep curiosity alive outside the lab and connect research
+                life to the wider world. My Tabelog page is <a href="https://tabelog.com/rvwr/pexu/" target="_blank"
+                  rel="noopener noreferrer">here</a>.</p>
+            </article>
+            <article class="contact-card">
+              <h3>Communication</h3>
+              <p>I enjoy turning technical results into cleaner visuals, stronger structure, and more readable narratives.</p>
+            </article>
+            <article class="contact-card">
+              <h3>Languages</h3>
+              <p>Chinese (native), English (fluent), and Japanese (N3), which helps me move comfortably across different
+                academic and cultural contexts.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-card" id="connect" data-reveal>
+          <div class="section-heading">
+            <div>
+              <span class="section-kicker">Contact</span>
+              <h2 class="section-title">Let's connect</h2>
+            </div>
+            <p class="section-summary">
+              If you would like to talk about ocean dynamics, collaboration, data analysis, or simply connect, feel free
+              to reach out.
+            </p>
+          </div>
+          <div class="contact-grid">
+            <article class="contact-card">
+              <h3>Email</h3>
+              <p>Primary: <a href="mailto:pexu@eps.s.u-tokyo.ac.jp">pexu@eps.s.u-tokyo.ac.jp</a><br>Secondary: <a
+                  href="mailto:pe.xu@outlook.com">pe.xu@outlook.com</a></p>
+              <div class="contact-actions">
+                <a class="button button-light" href="mailto:pexu@eps.s.u-tokyo.ac.jp">Send email</a>
+                <button class="button button-light" type="button" data-copy-email
+                  data-email="pexu@eps.s.u-tokyo.ac.jp">Copy address</button>
+              </div>
+            </article>
+            <article class="contact-card">
+              <h3>Profiles</h3>
+              <p>Academic and personal links collected in one place for quick access.</p>
+              <div class="contact-actions">
+                <a class="button button-light" href="https://orcid.org/0000-0001-9953-6582" target="_blank"
+                  rel="noopener noreferrer">ORCID</a>
+                <a class="button button-light" href="https://www.researchgate.net/profile/Peien-Xu?ev=hdr_xprf"
+                  target="_blank" rel="noopener noreferrer">ResearchGate</a>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <p>Peien Xu • Personal homepage • Built with plain HTML, CSS, and JavaScript for GitHub Pages.</p>
+      <p id="last-edited">Last updated: 2026/04/02</p>
+    </footer>
+  </main>
+
+  <button class="back-to-top" type="button" aria-label="Back to top" data-back-to-top>↑</button>
 
   <script>
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
+    const sections = document.querySelectorAll("[data-reveal]");
+    const navLinks = document.querySelectorAll("[data-nav-link]");
+    const siteNav = document.querySelector("[data-site-nav]");
+    const menuButton = document.querySelector("[data-menu-toggle]");
+    const progressBar = document.querySelector("[data-scroll-progress]");
+    const backToTop = document.querySelector("[data-back-to-top]");
+    const copyButtons = document.querySelectorAll("[data-copy-email]");
+    const copyFeedback = document.getElementById("copy-feedback");
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.section').forEach(section => {
-      observer.observe(section);
+    }, {
+      threshold: 0.16
     });
-  </script>
-  <script>
-    function filterPresentations(filter) {
-      const items = document.querySelectorAll('.section.presentations p');
-      const buttons = document.querySelectorAll('.filter-btn');
 
-      // 按钮高亮
-      buttons.forEach(btn => btn.classList.remove('active'));
-      buttons.forEach(btn => {
-        if (btn.textContent.toLowerCase() === filter) {
-          btn.classList.add('active');
+    sections.forEach((section) => revealObserver.observe(section));
+
+    const observedSections = Array.from(document.querySelectorAll("main section[id]"));
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
         }
+
+        navLinks.forEach((link) => {
+          const target = link.getAttribute("href").slice(1);
+          link.classList.toggle("active", target === entry.target.id);
+        });
       });
+    }, {
+      rootMargin: "-40% 0px -45% 0px",
+      threshold: 0.1
+    });
 
-      // 切换内容显示
-      items.forEach(item => {
-        const text = item.innerHTML;
-        if (filter === 'all' || text.includes(`<span class="tag">${filter}</span>`)) {
-          item.classList.remove('hidden');
-        } else {
-          item.classList.add('hidden');
-        }
+    observedSections.forEach((section) => sectionObserver.observe(section));
+
+    if (menuButton) {
+      menuButton.addEventListener("click", () => {
+        const expanded = menuButton.getAttribute("aria-expanded") === "true";
+        menuButton.setAttribute("aria-expanded", String(!expanded));
+        siteNav.classList.toggle("open");
       });
     }
+
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        if (!siteNav.classList.contains("open")) {
+          return;
+        }
+
+        siteNav.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    const filterButtons = document.querySelectorAll("[data-filter]");
+    const presentationCards = document.querySelectorAll(".presentation-card");
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const filter = button.dataset.filter;
+
+        filterButtons.forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+
+        presentationCards.forEach((card) => {
+          const matches = filter === "all" || card.dataset.kind === filter;
+          card.classList.toggle("is-hidden", !matches);
+        });
+      });
+    });
+
+    async function copyEmail(email, button) {
+      if (!navigator.clipboard) {
+        if (copyFeedback) {
+          copyFeedback.textContent = "Clipboard access is unavailable in this browser.";
+        }
+        return;
+      }
+
+      try {
+        await navigator.clipboard.writeText(email);
+        if (copyFeedback) {
+          copyFeedback.textContent = email + " copied to clipboard.";
+        }
+        if (button) {
+          const originalText = button.textContent;
+          button.textContent = "Copied";
+          window.setTimeout(() => {
+            button.textContent = originalText;
+          }, 1600);
+        }
+      } catch (error) {
+        if (copyFeedback) {
+          copyFeedback.textContent = "Copy failed. Please copy the address manually.";
+        }
+      }
+    }
+
+    copyButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        copyEmail(button.dataset.email, button);
+      });
+    });
+
+    function updateScrollUI() {
+      const scrollTop = window.scrollY;
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+
+      progressBar.style.width = progress + "%";
+      backToTop.classList.toggle("visible", scrollTop > 500);
+    }
+
+    window.addEventListener("scroll", updateScrollUI, { passive: true });
+    updateScrollUI();
+
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
   </script>
 </body>
 
