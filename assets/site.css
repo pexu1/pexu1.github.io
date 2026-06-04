@@ -459,6 +459,14 @@ p {
   height: auto;
 }
 
+.gallery-caption {
+  display: block;
+  padding: 9px 12px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
 .gallery-empty {
   padding: 16px;
   border: 1px dashed var(--line);
