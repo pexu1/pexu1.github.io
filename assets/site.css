@@ -91,14 +91,28 @@ a:hover {
 }
 
 .site-nav a {
+  position: relative;
+  padding: 4px 0;
   color: var(--text);
   text-decoration: none;
   font-size: 0.94rem;
+  transition: color 0.2s ease;
 }
 
 .site-nav a:hover,
 .site-nav a.active {
   color: var(--accent);
+}
+
+.site-nav a.active::after {
+  position: absolute;
+  right: 0;
+  bottom: -2px;
+  left: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--accent);
+  content: "";
 }
 
 .page {
@@ -291,6 +305,7 @@ p {
   border: 1px solid var(--line);
   border-radius: 6px;
   background: #ffffff;
+  box-shadow: 0 4px 18px rgba(23, 32, 42, 0.035);
 }
 
 .card {
@@ -388,6 +403,7 @@ p {
 .entry-meta {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 8px 14px;
   margin-bottom: 8px;
   color: var(--muted);
@@ -422,8 +438,14 @@ p {
 }
 
 .presentation-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: #f8efe4;
   color: var(--accent-warm);
   font-weight: 700;
+  line-height: 1.5;
 }
 
 .contact-strip {
@@ -451,20 +473,36 @@ p {
   color: var(--text);
   text-decoration: none;
   background: #ffffff;
+  box-shadow: 0 4px 18px rgba(23, 32, 42, 0.045);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.gallery-item:hover {
+  border-color: #b9c8d5;
+  box-shadow: 0 12px 28px rgba(23, 32, 42, 0.11);
+  transform: translateY(-3px);
 }
 
 .gallery-item img {
   display: block;
   width: 100%;
-  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.015);
 }
 
 .gallery-caption {
   display: block;
   padding: 9px 12px;
   border-top: 1px solid var(--line);
-  color: var(--muted);
+  background: var(--soft-bg);
+  color: #46515e;
   font-size: 0.92rem;
+  font-weight: 600;
 }
 
 .gallery-empty {
@@ -485,6 +523,18 @@ p {
 
 .site-footer p {
   margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .site-nav a,
+  .gallery-item,
+  .gallery-item img {
+    transition: none;
+  }
 }
 
 @media (max-width: 900px) {
