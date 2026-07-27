@@ -33,53 +33,26 @@ layout: null
     <section class="page-title">
       <p class="eyebrow">Gallery</p>
       <h1>Field photos</h1>
+      <p>
+        Photographed with a Nikon Z 8 mirrorless camera and NIKKOR Z 14-24mm f/2.8 S,
+        NIKKOR Z 24-120mm f/4 S, NIKKOR Z 100-400mm f/4.5-5.6 VR S, and
+        NIKKOR Z 50mm f/1.8 S lenses.
+      </p>
     </section>
 
     <section class="gallery-grid" aria-label="Photo gallery">
-      <a class="gallery-item" href="{{ '/gallery/AOGS2025.jpg' | relative_url }}" target="_blank" rel="noopener noreferrer">
-        <img src="{{ '/gallery/AOGS2025.jpg' | relative_url }}" alt="" loading="lazy">
-        <span class="gallery-caption">AOGS2025</span>
-      </a>
-      <a class="gallery-item" href="{{ '/gallery/R%3AV%20HAKUHO%20MARU_1.jpg' | relative_url }}" target="_blank" rel="noopener noreferrer">
-        <img src="{{ '/gallery/R%3AV%20HAKUHO%20MARU_1.jpg' | relative_url }}" alt="" loading="lazy">
-        <span class="gallery-caption">R:V HAKUHO MARU_1</span>
-      </a>
-      <a class="gallery-item" href="{{ '/gallery/R%3AV%20HAKUHO%20MARU_2.jpg' | relative_url }}" target="_blank" rel="noopener noreferrer">
-        <img src="{{ '/gallery/R%3AV%20HAKUHO%20MARU_2.jpg' | relative_url }}" alt="" loading="lazy">
-        <span class="gallery-caption">R:V HAKUHO MARU_2</span>
-      </a>
-      <a class="gallery-item" href="{{ '/gallery/R%3AV%20HAKUHO%20MARU_3.jpg' | relative_url }}" target="_blank" rel="noopener noreferrer">
-        <img src="{{ '/gallery/R%3AV%20HAKUHO%20MARU_3.jpg' | relative_url }}" alt="" loading="lazy">
-        <span class="gallery-caption">R:V HAKUHO MARU_3</span>
-      </a>
-      <a class="gallery-item" href="{{ '/gallery/R%3AV%20HAKUHO%20MARU_4.jpg' | relative_url }}" target="_blank" rel="noopener noreferrer">
-        <img src="{{ '/gallery/R%3AV%20HAKUHO%20MARU_4.jpg' | relative_url }}" alt="" loading="lazy">
-        <span class="gallery-caption">R:V HAKUHO MARU_4</span>
-      </a>
-      <a class="gallery-item" href="{{ '/gallery/R%3AV%20HAKUHO%20MARU_5.jpg' | relative_url }}" target="_blank" rel="noopener noreferrer">
-        <img src="{{ '/gallery/R%3AV%20HAKUHO%20MARU_5.jpg' | relative_url }}" alt="" loading="lazy">
-        <span class="gallery-caption">R:V HAKUHO MARU_5</span>
-      </a>
-      <a class="gallery-item" href="{{ '/gallery/R%3AV%20HAKUHO%20MARU_6.jpg' | relative_url }}" target="_blank" rel="noopener noreferrer">
-        <img src="{{ '/gallery/R%3AV%20HAKUHO%20MARU_6.jpg' | relative_url }}" alt="" loading="lazy">
-        <span class="gallery-caption">R:V HAKUHO MARU_6</span>
-      </a>
-      <a class="gallery-item" href="{{ '/gallery/R%3AV%20HAKUHO%20MARU_7.jpg' | relative_url }}" target="_blank" rel="noopener noreferrer">
-        <img src="{{ '/gallery/R%3AV%20HAKUHO%20MARU_7.jpg' | relative_url }}" alt="" loading="lazy">
-        <span class="gallery-caption">R:V HAKUHO MARU_7</span>
-      </a>
-      <a class="gallery-item" href="{{ '/gallery/R%3AV%20HAKUHO%20MARU_8.jpg' | relative_url }}" target="_blank" rel="noopener noreferrer">
-        <img src="{{ '/gallery/R%3AV%20HAKUHO%20MARU_8.jpg' | relative_url }}" alt="" loading="lazy">
-        <span class="gallery-caption">R:V HAKUHO MARU_8</span>
-      </a>
-      <a class="gallery-item" href="{{ '/gallery/R%3AV%20HAKUHO%20MARU_9.jpg' | relative_url }}" target="_blank" rel="noopener noreferrer">
-        <img src="{{ '/gallery/R%3AV%20HAKUHO%20MARU_9.jpg' | relative_url }}" alt="" loading="lazy">
-        <span class="gallery-caption">R:V HAKUHO MARU_9</span>
-      </a>
-      <a class="gallery-item" href="{{ '/gallery/R%3AV%20HAKUHO%20MARU_10.jpg' | relative_url }}" target="_blank" rel="noopener noreferrer">
-        <img src="{{ '/gallery/R%3AV%20HAKUHO%20MARU_10.jpg' | relative_url }}" alt="" loading="lazy">
-        <span class="gallery-caption">R:V HAKUHO MARU_10</span>
-      </a>
+      {% assign gallery_files = site.static_files | sort: "name" %}
+      {% for photo in gallery_files %}
+        {% if photo.path contains "/gallery/" %}
+          {% assign photo_ext = photo.extname | downcase %}
+          {% if photo_ext == ".jpg" or photo_ext == ".jpeg" or photo_ext == ".png" or photo_ext == ".gif" or photo_ext == ".webp" %}
+            <a class="gallery-item" href="{{ photo.path | relative_url | uri_escape }}" target="_blank" rel="noopener noreferrer">
+              <img src="{{ photo.path | relative_url | uri_escape }}" alt="{{ photo.basename | escape }}" loading="lazy">
+              <span class="gallery-caption">{{ photo.basename | escape }}</span>
+            </a>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
     </section>
   </main>
 
