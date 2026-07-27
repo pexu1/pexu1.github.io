@@ -54,6 +54,18 @@ layout: null
         {% endif %}
       {% endfor %}
     </section>
+
+    <script>
+      const gallery = document.querySelector(".gallery-grid");
+      const photos = Array.from(gallery.children);
+
+      for (let i = photos.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [photos[i], photos[j]] = [photos[j], photos[i]];
+      }
+
+      gallery.append(...photos);
+    </script>
   </main>
 
   <footer class="site-footer">
